@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\AppstackController as mainCtrl;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,3 +49,7 @@ Route::get('penulis', function () {
 Route::get('tulisan', function () {
     return view('tulisan');
 })->middleware(['auth', 'role_or_permission:lihat-tulisan|penulis|admin']);
+
+Route::get('blank', [mainCtrl::class, 'index'])->middleware(['auth', 'role:penulis|admin'])->name('blank');
+
+Route::resource('mhs', MahasiswaController::class);

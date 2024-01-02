@@ -44,10 +44,11 @@ class LoginController extends Controller
     }
 
 
+    // landing page after login each role
     protected function authenticated()
     {
         if (Auth::user()->hasRole('admin')) {
-            return redirect()->to('admin');
+            return redirect()->to('blank');
         }
 
         if (Auth::user()->hasRole('penulis')) {
